@@ -51,17 +51,14 @@
 
     .hero-shots {
       display: flex; justify-content: center; gap: 20px;
-      padding: 48px 0 16px; flex-wrap: wrap;
+      padding: 48px 0 32px; flex-wrap: wrap; align-items: flex-start;
     }
     .hero-shots img {
       width: min(280px, 78vw); border-radius: 22px;
       box-shadow: 0 18px 44px rgba(93, 72, 42, .24);
       border: 1px solid var(--border);
     }
-    .hero-shots img:nth-child(2) { transform: translateY(26px); }
-    .hero-shots img:nth-child(3) { transform: translateY(52px); }
     @media (max-width: 720px) {
-      .hero-shots img:nth-child(2), .hero-shots img:nth-child(3) { transform: none; }
       .hero-shots img:nth-child(3) { display: none; }
     }
 
