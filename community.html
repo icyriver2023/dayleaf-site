@@ -131,6 +131,7 @@
           <span class="who">${esc(p.handle)} · ${ago(p.createdAt)}</span>
           <p class="body">${esc(p.body)}</p>
           <span class="replies-note" onclick="toggleThread('${p.id}')">${p.replyCount} ${p.replyCount === 1 ? "reply" : "replies"} — tap to ${p.replyCount ? "read & reply" : "reply"}</span>
+          ${p.mine ? `<span class="replies-note" style="float:right;color:#C45C5C" onclick="deletePost('${p.id}')">delete</span>` : ""}
           <div class="thread" id="thread-${p.id}"></div>
         </div>`).join("");
     }
@@ -158,6 +159,15 @@
       } catch (e) {
         el.innerHTML = '<p class="muted">Couldn\'t load replies.</p>';
       }
+    };
+
+    window.deletePost = async function (id) {
+      if (!confirm("Delete this post and its replies?")) return;
+      await fetch(`${API}/api/feedback/${id}`, {
+        method: "DELETE", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ deviceId }),
+      });
+      load();
     };
 
     window.sendReply = async function (ev, id) {
