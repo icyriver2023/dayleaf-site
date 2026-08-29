@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dayleaf Community</title>
+  <meta name="description" content="Ask questions, request features, and talk to the Dayleaf developer — the same community board that lives inside the app.">
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --paper:#F4EEE1; --paper-warm:#EDE5D4; --card:#FFFDF7; --ink:#2C2416;
+            --ink-soft:#524936; --brand:#8B6F47; --brand-deep:#6E5636; --border:#D3C7B0; --leaf:#2E7D46; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Inter',-apple-system,sans-serif; color:var(--ink);
+           background:linear-gradient(180deg,var(--paper) 0%,var(--paper-warm) 100%);
+           line-height:1.6; min-height:100vh; }
+    h1,h2,h3 { font-family:'Crimson Pro',Georgia,serif; line-height:1.2; }
+    a { color:var(--brand); }
+    .wrap { max-width:720px; margin:0 auto; padding:0 24px 80px; }
+    nav { display:flex; justify-content:center; gap:26px; padding:18px 0; font-size:.95rem; font-weight:500; }
+    .brandline { text-align:center; padding:20px 0 4px; }
+    .brandline img { width:56px; height:56px; border-radius:14px; box-shadow:0 6px 18px rgba(93,72,42,.22); }
+    h1 { font-size:2.1rem; text-align:center; margin:16px 0 4px; }
+    .sub { text-align:center; color:var(--ink-soft); margin-bottom:28px; font-size:.95rem; }
+
+    .toolbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; gap:12px; }
+    .btn { display:inline-block; border:none; cursor:pointer; font-family:'Inter',sans-serif;
+           background:var(--brand); color:#fff; font-weight:600; font-size:.92rem;
+           padding:10px 20px; border-radius:999px; }
+    .btn.quiet { background:transparent; color:var(--brand); border:1px solid var(--border); }
+    .handle-chip { font-size:.85rem; color:var(--ink-soft); }
+    .handle-chip b { color:var(--ink); }
+
+    .post { background:var(--card); border:1px solid var(--border); border-radius:16px;
+            padding:18px 20px; margin-bottom:14px; box-shadow:0 4px 12px rgba(93,72,42,.06); }
+    .post-head { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; cursor:pointer; }
+    .post h3 { font-size:1.2rem; }
+    .who { font-size:.82rem; color:var(--ink-soft); }
+    .devbadge { display:inline-block; padding:1px 8px; border-radius:999px; background:var(--leaf);
+                color:#fff; font-size:.68rem; font-weight:600; vertical-align:middle; }
+    .post .body { color:#3a3226; font-size:.95rem; margin:8px 0 4px; white-space:pre-wrap; }
+    .replies-note { font-size:.82rem; color:var(--brand); cursor:pointer; }
+    .thread { border-top:1px solid var(--border); margin-top:12px; padding-top:12px; display:none; }
+    .reply { padding:10px 0 10px 14px; border-left:3px solid var(--paper-warm); margin-bottom:6px; }
+    .reply.dev { border-left-color:var(--leaf); background:rgba(46,125,70,.05); border-radius:0 10px 10px 0; }
+    .reply .body { margin:2px 0 0; }
+
+    form { background:var(--card); border:1px solid var(--border); border-radius:16px;
+           padding:20px; margin-bottom:20px; }
+    form label { font-size:.82rem; font-weight:600; color:var(--ink-soft); display:block; margin:10px 0 4px; }
+    form input, form textarea { width:100%; font-family:'Inter',sans-serif; font-size:.95rem;
+      padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:#fff; color:var(--ink); }
+    form textarea { min-height:90px; resize:vertical; }
+    form .row { display:flex; justify-content:flex-end; gap:10px; margin-top:14px; }
+    .reply-form { margin:8px 0 0; padding:12px; }
+    .muted { color:var(--ink-soft); font-size:.9rem; text-align:center; padding:30px 0; }
+    .hidden { display:none; }
+  </style>
+</head>
+<body>
+  <nav><a href="index.html">Home</a><a href="blog/">Blog</a><a href="community.html">Community</a><a href="support.html">Support</a></nav>
+  <div class="brandline"><a href="index.html"><img src="assets/icon.png" alt="Dayleaf"></a></div>
+  <div class="wrap">
+    <h1>Community</h1>
+    <p class="sub">Questions, ideas, and feedback — this is the same board that lives inside the app, and the developer reads everything.</p>
+
+    <div class="toolbar">
+      <span class="handle-chip" id="handleChip"></span>
+      <button class="btn" id="newPostBtn">New Post</button>
+    </div>
+
+    <form id="postForm" class="hidden">
+      <label for="pfHandle">Display name</label>
+      <input id="pfHandle" maxlength="40" placeholder="e.g. LeafFan">
+      <label for="pfTitle">Title</label>
+      <input id="pfTitle" maxlength="120" placeholder="What's on your mind?">
+      <label for="pfBody">Details</label>
+      <textarea id="pfBody" maxlength="2000" placeholder="Feature idea, question, bug — anything."></textarea>
+      <div class="row">
+        <button type="button" class="btn quiet" id="pfCancel">Cancel</button>
+        <button type="submit" class="btn">Post</button>
+      </div>
+    </form>
+
+    <div id="feed"><p class="muted">Loading the board…</p></div>
+  </div>
+
+  <script>
+    const API = "https://date-jotter-production.up.railway.app";
+    const deviceId = localStorage.dl_device || (localStorage.dl_device = "web-" + crypto.randomUUID());
+    const feed = document.getElementById("feed");
+    const postForm = document.getElementById("postForm");
+    const handleChip = document.getElementById("handleChip");
+
+    const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+    const ago = iso => {
+      const s = (Date.now() - new Date(iso)) / 1000;
+      if (s < 60) return "just now";
+      if (s < 3600) return Math.floor(s/60) + "m ago";
+      if (s < 86400) return Math.floor(s/3600) + "h ago";
+      return Math.floor(s/86400) + "d ago";
+    };
+    const savedHandle = () => localStorage.dl_handle || "";
+    const refreshChip = () => {
+      handleChip.innerHTML = savedHandle() ? `Posting as <b>${esc(savedHandle())}</b>` : "";
+    };
+
+    async function load() {
+      try {
+        const r = await fetch(`${API}/api/feedback?deviceId=${deviceId}`);
+        const d = await r.json();
+        render(d.posts || []);
+      } catch (e) {
+        feed.innerHTML = '<p class="muted">Couldn\'t reach the board — please try again in a minute.</p>';
+      }
+    }
+
+    function render(posts) {
+      if (!posts.length) {
+        feed.innerHTML = '<p class="muted">No posts yet — start the first thread!</p>';
+        return;
+      }
+      feed.innerHTML = posts.map(p => `
+        <div class="post" data-id="${p.id}">
+          <div class="post-head" onclick="toggleThread('${p.id}')">
+            <h3>${esc(p.title)}</h3>
+            ${p.hasDeveloperReply ? '<span class="devbadge">DEV REPLIED</span>' : ''}
+          </div>
+          <span class="who">${esc(p.handle)} · ${ago(p.createdAt)}</span>
+          <p class="body">${esc(p.body)}</p>
+          <span class="replies-note" onclick="toggleThread('${p.id}')">${p.replyCount} ${p.replyCount === 1 ? "reply" : "replies"} — tap to ${p.replyCount ? "read & reply" : "reply"}</span>
+          <div class="thread" id="thread-${p.id}"></div>
+        </div>`).join("");
+    }
+
+    window.toggleThread = async function (id) {
+      const el = document.getElementById("thread-" + id);
+      if (el.style.display === "block") { el.style.display = "none"; return; }
+      el.style.display = "block";
+      el.innerHTML = '<p class="muted">Loading…</p>';
+      try {
+        const r = await fetch(`${API}/api/feedback/${id}?deviceId=${deviceId}`);
+        const d = await r.json();
+        const replies = (d.replies || []).map(rp => `
+          <div class="reply ${rp.isDeveloper ? "dev" : ""}">
+            <span class="who">${esc(rp.handle)} ${rp.isDeveloper ? '<span class="devbadge">DEVELOPER</span>' : ""} · ${ago(rp.createdAt)}</span>
+            <p class="body">${esc(rp.body)}</p>
+          </div>`).join("");
+        el.innerHTML = replies + `
+          <form class="reply-form" onsubmit="return sendReply(event,'${id}')">
+            <input id="rh-${id}" maxlength="40" placeholder="Display name" value="${esc(savedHandle())}">
+            <label></label>
+            <textarea id="rb-${id}" maxlength="2000" placeholder="Write a reply…"></textarea>
+            <div class="row"><button type="submit" class="btn">Reply</button></div>
+          </form>`;
+      } catch (e) {
+        el.innerHTML = '<p class="muted">Couldn\'t load replies.</p>';
+      }
+    };
+
+    window.sendReply = async function (ev, id) {
+      ev.preventDefault();
+      const handle = document.getElementById("rh-" + id).value.trim();
+      const body = document.getElementById("rb-" + id).value.trim();
+      if (!handle || !body) return false;
+      localStorage.dl_handle = handle; refreshChip();
+      await fetch(`${API}/api/feedback/${id}/replies`, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ deviceId, handle, body }),
+      });
+      await load();
+      window.toggleThread(id);
+      return false;
+    };
+
+    document.getElementById("newPostBtn").onclick = () => {
+      postForm.classList.toggle("hidden");
+      document.getElementById("pfHandle").value = savedHandle();
+    };
+    document.getElementById("pfCancel").onclick = () => postForm.classList.add("hidden");
+    postForm.onsubmit = async ev => {
+      ev.preventDefault();
+      const handle = document.getElementById("pfHandle").value.trim();
+      const title = document.getElementById("pfTitle").value.trim();
+      const body = document.getElementById("pfBody").value.trim();
+      if (!handle || !title || !body) return;
+      localStorage.dl_handle = handle; refreshChip();
+      await fetch(`${API}/api/feedback`, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ deviceId, handle, title, body }),
+      });
+      postForm.classList.add("hidden");
+      document.getElementById("pfTitle").value = "";
+      document.getElementById("pfBody").value = "";
+      load();
+    };
+
+    refreshChip();
+    load();
+  </script>
+</body>
+</html>

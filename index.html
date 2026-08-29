@@ -106,6 +106,13 @@
       background: var(--brand); color: #fff; font-size: .75rem; font-weight: 600;
       margin-bottom: 12px; letter-spacing: .03em;
     }
+    .price-card .badge.quiet {
+      background: transparent; color: var(--ink-soft);
+      border: 1px solid var(--border);
+    }
+    .pricing { align-items: stretch; }
+    .price-card { display: flex; flex-direction: column; }
+    .price-card p { margin-top: auto; padding-top: 10px; }
     .price-card .amount { font-family: 'Crimson Pro', serif; font-size: 2.4rem; font-weight: 700; }
     .price-card .period { color: var(--ink-soft); font-size: .95rem; }
     .price-card p { color: var(--ink-soft); font-size: .9rem; margin-top: 10px; }
@@ -138,6 +145,11 @@
 </head>
 <body>
 
+  <nav style="display:flex;justify-content:center;gap:26px;padding:18px 0 0;font-size:.95rem;font-weight:500">
+    <a href="blog/">Blog</a>
+    <a href="community.html">Community</a>
+    <a href="support.html">Support</a>
+  </nav>
   <header class="wrap">
     <img class="icon" src="assets/icon.png" alt="Dayleaf app icon">
     <h1>Your life,<br>one page at a time</h1>
@@ -176,6 +188,7 @@
     <p class="section-sub">Other journals charge $50–75 every year, forever. Dayleaf Pro is yours for the price of a nice notebook.</p>
     <div class="pricing">
       <div class="price-card">
+        <div class="badge quiet">MONTHLY</div>
         <div class="amount">$0.99</div>
         <div class="period">per month</div>
         <p>Try Pro the easy way. Cancel anytime.</p>
@@ -187,6 +200,7 @@
         <p>Every theme, custom stickers, per-planner fonts, 10 photos per entry, voice notes, the Apple Watch app, unlimited planners.</p>
       </div>
       <div class="price-card">
+        <div class="badge quiet">YEARLY</div>
         <div class="amount">$9.99</div>
         <div class="period">per year</div>
         <p>A year of Pro for less than one month of the other guys.</p>
@@ -205,6 +219,8 @@
 
   <footer>
     <div class="wrap">
+      <a href="blog/">Blog</a> ·
+      <a href="community.html">Community</a> ·
       <a href="privacy.html">Privacy Policy</a> ·
       <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a> ·
       <a href="support.html">Support</a> ·
