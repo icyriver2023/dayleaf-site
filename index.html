@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dayleaf — Paper Planner &amp; Diary</title>
-  <meta name="description" content="A beautiful journal that lives on your calendar. Import your entire Day One journal — entries, photos, videos and audio — free, no subscription ever.">
+  <meta name="description" content="A beautiful journal that lives on your calendar — on iPhone, iPad, Apple Watch and Mac. Import your entire Day One journal free. Own Pro forever with one purchase.">
   <meta name="apple-itunes-app" content="app-id=6757987200">
   <meta property="og:title" content="Dayleaf — Paper Planner &amp; Diary">
   <meta property="og:description" content="Your life, one page at a time. A journal that lives on your calendar.">
-  <meta property="og:image" content="https://dayleaf.day/assets/shot-calendar.jpg">
+  <meta property="og:image" content="https://getdayleaf.app/assets/shot-calendar.jpg">
   <link rel="icon" type="image/png" href="assets/icon.png">
   <link rel="apple-touch-icon" href="assets/icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,13 +16,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --paper: #FFFEF9;
-      --paper-warm: #F5F1E8;
+      --paper: #F4EEE1;
+      --paper-warm: #EDE5D4;
+      --card: #FFFDF7;
       --ink: #2C2416;
-      --ink-soft: #6B6456;
+      --ink-soft: #524936;
       --brand: #8B6F47;
       --brand-deep: #6E5636;
-      --border: #E7E0D2;
+      --border: #D3C7B0;
+      --leaf: #2E7D46;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -39,12 +41,13 @@
     header { padding: 64px 0 24px; text-align: center; }
     .icon {
       width: 108px; height: 108px; border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(93, 72, 42, .25);
+      box-shadow: 0 10px 30px rgba(93, 72, 42, .28);
     }
     h1 { font-size: clamp(2.4rem, 6vw, 3.6rem); font-weight: 700; margin: 28px 0 12px; }
-    .tagline { font-size: 1.2rem; color: var(--ink-soft); max-width: 34em; margin: 0 auto 28px; }
+    .tagline { font-size: 1.2rem; color: var(--ink-soft); max-width: 36em; margin: 0 auto 28px; }
     .store-badge img { height: 54px; }
     .free-note { margin-top: 10px; font-size: .9rem; color: var(--ink-soft); }
+    .platforms { margin-top: 6px; font-size: .85rem; color: var(--ink-soft); letter-spacing: .02em; }
 
     .hero-shots {
       display: flex; justify-content: center; gap: 20px;
@@ -52,7 +55,8 @@
     }
     .hero-shots img {
       width: min(280px, 78vw); border-radius: 22px;
-      box-shadow: 0 18px 44px rgba(93, 72, 42, .22);
+      box-shadow: 0 18px 44px rgba(93, 72, 42, .24);
+      border: 1px solid var(--border);
     }
     .hero-shots img:nth-child(2) { transform: translateY(26px); }
     .hero-shots img:nth-child(3) { transform: translateY(52px); }
@@ -64,19 +68,51 @@
     /* Sections */
     section { padding: 72px 0; }
     .section-title { font-size: 2.1rem; font-weight: 700; text-align: center; margin-bottom: 12px; }
-    .section-sub { text-align: center; color: var(--ink-soft); max-width: 40em; margin: 0 auto 44px; }
+    .section-sub { text-align: center; color: var(--ink-soft); max-width: 42em; margin: 0 auto 44px; }
 
     .features {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 18px;
     }
     .card {
-      background: #fff; border: 1px solid var(--border); border-radius: 18px;
-      padding: 26px 24px; box-shadow: 0 4px 14px rgba(93, 72, 42, .06);
+      background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+      padding: 26px 24px; box-shadow: 0 4px 14px rgba(93, 72, 42, .08);
     }
     .card .emoji { font-size: 1.7rem; }
     .card h3 { font-size: 1.25rem; margin: 10px 0 6px; }
     .card p { color: var(--ink-soft); font-size: .95rem; }
+    .card .new {
+      display: inline-block; margin-left: 8px; padding: 1px 9px; border-radius: 999px;
+      background: var(--leaf); color: #fff; font-family: 'Inter', sans-serif;
+      font-size: .68rem; font-weight: 600; vertical-align: middle; letter-spacing: .04em;
+    }
+
+    /* Pricing */
+    .pricing {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px; max-width: 880px; margin: 0 auto;
+    }
+    .price-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+      padding: 30px 26px; text-align: center;
+      box-shadow: 0 4px 14px rgba(93, 72, 42, .08);
+    }
+    .price-card.hero-card {
+      border: 2px solid var(--brand);
+      box-shadow: 0 12px 34px rgba(93, 72, 42, .18);
+    }
+    .price-card .badge {
+      display: inline-block; padding: 3px 14px; border-radius: 999px;
+      background: var(--brand); color: #fff; font-size: .75rem; font-weight: 600;
+      margin-bottom: 12px; letter-spacing: .03em;
+    }
+    .price-card .amount { font-family: 'Crimson Pro', serif; font-size: 2.4rem; font-weight: 700; }
+    .price-card .period { color: var(--ink-soft); font-size: .95rem; }
+    .price-card p { color: var(--ink-soft); font-size: .9rem; margin-top: 10px; }
+    .free-forever {
+      text-align: center; color: var(--ink-soft); font-size: .95rem;
+      max-width: 44em; margin: 30px auto 0;
+    }
 
     /* Day One band */
     .switch-band {
@@ -105,15 +141,16 @@
   <header class="wrap">
     <img class="icon" src="assets/icon.png" alt="Dayleaf app icon">
     <h1>Your life,<br>one page at a time</h1>
-    <p class="tagline">Dayleaf is a beautiful journal that lives on your calendar — write your days, set your goals, and watch your months fill with memories.</p>
+    <p class="tagline">Dayleaf is a beautiful journal that lives on your calendar — write your days, set your goals, and watch your months fill with memories. Now on your wrist and your desk, too.</p>
     <a class="store-badge" href="https://apps.apple.com/app/id6757987200">
       <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
     </a>
-    <p class="free-note">Free. No subscription ever.</p>
+    <p class="free-note">Free to start. Own Pro forever with one purchase — subscriptions optional.</p>
+    <p class="platforms">iPhone · iPad · Apple&nbsp;Watch · Mac</p>
     <div class="hero-shots">
       <img src="assets/shot-calendar.jpg" alt="Dayleaf month calendar with entries and goals">
       <img src="assets/shot-day.jpg" alt="Dayleaf day view with goals, stickers and reflection">
-      <img src="assets/shot-themes.jpg" alt="Seven hand-crafted themes in light and dark">
+      <img src="assets/shot-themes.jpg" alt="Dayleaf in the Forest theme">
     </div>
   </header>
 
@@ -122,18 +159,46 @@
     <p class="section-sub">Multiple color-coded planners, entries right on the calendar, and your whole life searchable in an instant.</p>
     <div class="features">
       <div class="card"><div class="emoji">📆</div><h3>A journal on your calendar</h3><p>Entries appear right in the month grid. Flip on photo mode and your month becomes a wall of memories — or scroll months endlessly like a timeline.</p></div>
-      <div class="card"><div class="emoji">📸</div><h3>Photos, videos &amp; voice</h3><p>Attach photos and videos to any entry, or record a voice note. They show up across your calendar, week and day views.</p></div>
+      <div class="card"><div class="emoji">⌚️</div><h3>One tap from your wrist<span class="new">NEW</span></h3><p>The Apple Watch app opens straight into capture — dictate a thought or record a voice memo, and it lands in your journal with an automatic transcript.</p></div>
+      <div class="card"><div class="emoji">📸</div><h3>Photos from that day<span class="new">NEW</span></h3><p>Writing about last Saturday? The photos you took that day appear right in the editor — attach them with one tap. Videos and voice notes too.</p></div>
+      <div class="card"><div class="emoji">💻</div><h3>At home on your Mac<span class="new">NEW</span></h3><p>The full journal on your desktop — same planners, same themes, same calendar, one purchase across all your devices.</p></div>
+      <div class="card"><div class="emoji">🌍</div><h3>The world is leafing<span class="new">NEW</span></h3><p>A living globe where every light is a real person writing right now — anonymous, city-level sparks and nothing more. Quiet company for a quiet habit.</p></div>
+      <div class="card"><div class="emoji">🕰</div><h3>On This Day</h3><p>Revisit what you wrote on this date across the years — your own history, resurfacing right when it means the most.</p></div>
       <div class="card"><div class="emoji">🎨</div><h3>Seven hand-crafted themes</h3><p>Paper, Forest, Ocean, Lavender, Rose, Ink and Sunset — each with a light and dark face. Personalize every planner with its own icon, font and text size.</p></div>
       <div class="card"><div class="emoji">⭐️</div><h3>Stickers, like real ones</h3><p>Mark birthdays, workouts, paydays and deadlines with day stickers — or design your own, just like a sticker sheet in a paper planner.</p></div>
-      <div class="card"><div class="emoji">🎯</div><h3>Goals &amp; reflection</h3><p>Daily, weekly and monthly goals with notes to look back on. Win the day, then watch the months stack up.</p></div>
+      <div class="card"><div class="emoji">🎯</div><h3>Goals &amp; reflection</h3><p>Daily, weekly and monthly goals with notes to look back on — checkable from your phone or your watch.</p></div>
       <div class="card"><div class="emoji">🔒</div><h3>Private, backed up, yours</h3><p>Local-first storage with one-tap backup to your own iCloud. Your journal is never locked in — export any time. Available in 10 languages.</p></div>
     </div>
   </section>
 
   <section class="wrap">
+    <h2 class="section-title">Own it. Don't rent it.</h2>
+    <p class="section-sub">Other journals charge $50–75 every year, forever. Dayleaf Pro is yours for the price of a nice notebook.</p>
+    <div class="pricing">
+      <div class="price-card">
+        <div class="amount">$0.99</div>
+        <div class="period">per month</div>
+        <p>Try Pro the easy way. Cancel anytime.</p>
+      </div>
+      <div class="price-card hero-card">
+        <div class="badge">BUY ONCE — YOURS FOREVER</div>
+        <div class="amount">$14.99</div>
+        <div class="period">one time, all devices</div>
+        <p>Every theme, custom stickers, per-planner fonts, 10 photos per entry, voice notes, the Apple Watch app, unlimited planners.</p>
+      </div>
+      <div class="price-card">
+        <div class="amount">$9.99</div>
+        <div class="period">per year</div>
+        <p>A year of Pro for less than one month of the other guys.</p>
+      </div>
+    </div>
+    <p class="free-forever">And the free app is genuinely free: unlimited entries, all views, search, goals, stickers, Day One import, and iCloud backup. Everything you already use stays yours — Pro only adds.</p>
+  </section>
+
+  <section class="wrap">
     <div class="switch-band">
       <h2>Switching from Day One?</h2>
-      <p>Import your entire journal in minutes — entries, photos, videos and audio, even a decade-sized archive. Free, built in, no subscription.</p>
+      <p>Import your entire journal in minutes — entries, photos, videos and audio, even a decade-sized archive. Free, built in, forever.</p>
       <a class="pill" href="https://apps.apple.com/app/id6757987200">Bring your journal home&nbsp;→</a>
     </div>
   </section>
@@ -141,6 +206,7 @@
   <footer>
     <div class="wrap">
       <a href="privacy.html">Privacy Policy</a> ·
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a> ·
       <a href="support.html">Support</a> ·
       <a href="https://apps.apple.com/app/id6757987200">App Store</a>
       <p style="margin-top:14px">© 2026 Dayleaf</p>
