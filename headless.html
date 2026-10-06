@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Headless Dayleaf — API, CLI and MCP for agentic journaling</title>
+  <meta name="description" content="Let agents, scripts and the dayleaf command line read and write your Dayleaf journal through a local API on your Mac. Weather, health, screen time, a summary of your day — filed where you'd have written them.">
+  <link rel="canonical" href="https://getdayleaf.app/headless.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dayleaf">
+  <meta property="og:title" content="Headless Dayleaf — agentic journaling">
+  <meta property="og:description" content="A local API, a CLI and an MCP server so your agents can write to your journal. Nothing leaves your Mac.">
+  <meta property="og:url" content="https://getdayleaf.app/headless.html">
+  <link rel="icon" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, sans-serif; color: #2C2416; background: #F5F1E8; line-height: 1.65; padding: 24px; }
+    .container { max-width: 760px; margin: 24px auto; background: #FFFEF9; padding: 44px 40px; border-radius: 18px; border: 1px solid #E7E0D3; }
+    h1 { font-family: 'Crimson Pro', Georgia, serif; font-size: 2rem; color: #8B6F47; margin-bottom: 10px; }
+    .lede { font-size: 1.05rem; color: #4A4335; margin-bottom: 22px; }
+    h2 { font-family: 'Crimson Pro', Georgia, serif; font-size: 1.3rem; color: #8B6F47; margin: 30px 0 8px; }
+    h3 { font-size: 1rem; color: #2C2416; margin: 18px 0 6px; }
+    p, li { margin-bottom: 12px; color: #4A4335; }
+    ul, ol { padding-left: 22px; }
+    a { color: #8B6F47; }
+    .back { display: inline-block; margin-bottom: 18px; font-size: .9rem; }
+    pre { background: #2C2416; color: #F5F1E8; border-radius: 12px; padding: 14px 16px; overflow-x: auto; font-size: .86rem; line-height: 1.5; margin: 8px 0 14px; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9em; }
+    p code, li code, td code { background: #F5F1E8; padding: 1px 5px; border-radius: 5px; color: #5C4A2E; }
+    .note { background: #F5F1E8; border-radius: 12px; padding: 16px 18px; margin: 10px 0 18px; }
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; margin: 8px 0 16px; }
+    th, td { text-align: left; padding: 8px 8px; border-bottom: 1px solid #E7E0D3; vertical-align: top; }
+    th { font-size: .78rem; letter-spacing: .05em; text-transform: uppercase; color: #8B6F47; }
+    .tablebox { overflow-x: auto; }
+    .ideas li { margin-bottom: 6px; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CKYCE4X1YG"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-CKYCE4X1YG');</script>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="index.html">← Dayleaf</a>
+    <h1>Headless Dayleaf</h1>
+    <p class="lede">Your journal, open to your agents. Dayleaf for Mac can serve a small local API so scripts, the <code>dayleaf</code> command line and any MCP-capable agent can read and write entries, stickers and goals. Nothing leaves your Mac.</p>
+
+    <div class="note">
+      <p style="margin-bottom:6px"><strong>What it unlocks.</strong> An agent that already knows your calendar, your health data, your screen time or the weather can file them into Dayleaf as it would into a notebook — a line about the day's weather in a <em>Weather</em> planner, your steps and sleep in <em>Health</em>, a summary of what you shipped in <em>Work</em>. Entries written this way carry a small "via <em>name</em>" label, so your own words and an agent's notes never blur.</p>
+    </div>
+
+    <h2>Switch it on</h2>
+    <ol>
+      <li>Open Dayleaf on your Mac (2.5.0 or later) → <strong>Settings → Headless Dayleaf</strong> → turn it on.</li>
+      <li>Click <strong>Copy API token</strong>. The token is the only key; regenerate it any time.</li>
+      <li>The API listens on <code>http://127.0.0.1:7317</code> while the app is open. It never binds to a network interface.</li>
+    </ol>
+
+    <h2>The command line</h2>
+<pre><code>npm install -g dayleaf          # or: npx dayleaf …
+dayleaf auth &lt;token&gt;
+dayleaf add "Ran 5k along the river before work" --planner Health
+dayleaf day today
+dayleaf list --from -7 --q sleep --json</code></pre>
+    <p><code>dayleaf help</code> lists everything: add, edit, rm, list, day, show, planners, stickers, stamp, goals. A planner named in <code>--planner</code> is created if it does not exist. Add <code>--json</code> to any command for machine-readable output.</p>
+
+    <h2>Agents: the MCP server</h2>
+    <p><code>dayleaf-mcp</code> is a <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server. Point Claude, ChatGPT, Muse or any MCP client at it and the journal becomes a set of tools: <code>dayleaf_add_entry</code>, <code>dayleaf_list_entries</code>, <code>dayleaf_get_day</code>, <code>dayleaf_stamp_sticker</code>, <code>dayleaf_add_goal</code> and friends.</p>
+    <h3>Claude Desktop</h3>
+<pre><code>{ "mcpServers": { "dayleaf": { "command": "npx", "args": ["-y", "dayleaf-mcp"],
+                               "env": { "DAYLEAF_SOURCE": "claude" } } } }</code></pre>
+    <h3>Claude Code</h3>
+<pre><code>claude mcp add dayleaf -- npx -y dayleaf-mcp</code></pre>
+    <p>Then ask: <em>"Log today's weather in my Weather planner"</em>, <em>"What did I write about sleep last week?"</em>, <em>"Stamp a workout sticker on yesterday."</em></p>
+
+    <h2>Ideas</h2>
+    <ul class="ideas">
+      <li><strong>Evening weather line</strong> — <code>curl -s "wttr.in/San+Jose?format=%C+%t" | xargs -I{} dayleaf add "{}" --planner Weather --source wttr</code> in a nightly cron.</li>
+      <li><strong>Health summary</strong> — an agent with access to your Apple Health export writes steps, sleep and workouts into <em>Health</em> once a day.</li>
+      <li><strong>Screen time</strong> — a short "where the hours went" note, so the calendar shows it next to what you wrote.</li>
+      <li><strong>Day summary</strong> — at 9 pm an agent reads today's entries (<code>dayleaf day today --json</code>), writes a two-line summary and ticks the goals you finished.</li>
+      <li><strong>Memory for your agent</strong> — <code>dayleaf list --q "decided"</code> gives an assistant a searchable record of what you chose and why.</li>
+    </ul>
+
+    <h2>HTTP API</h2>
+    <p>Base URL <code>http://127.0.0.1:7317</code>. Send <code>Authorization: Bearer &lt;token&gt;</code>. JSON in, JSON out. Dates are <code>YYYY-MM-DD</code>; planners accept an id or a name.</p>
+    <div class="tablebox"><table>
+      <tr><th>Method</th><th>Path</th><th>Body / query</th></tr>
+      <tr><td>GET</td><td><code>/v1/ping</code></td><td>no auth · version, build, <code>authenticated</code></td></tr>
+      <tr><td>GET · POST</td><td><code>/v1/planners</code></td><td>POST <code>{name, color?}</code></td></tr>
+      <tr><td>GET</td><td><code>/v1/entries</code></td><td><code>?from&amp;to&amp;planner&amp;q&amp;limit</code></td></tr>
+      <tr><td>POST</td><td><code>/v1/entries</code></td><td><code>{content, date?, planner?, source?}</code></td></tr>
+      <tr><td>GET · PATCH · DELETE</td><td><code>/v1/entries/:id</code></td><td>PATCH <code>{content?, date?, planner?}</code></td></tr>
+      <tr><td>GET</td><td><code>/v1/days/:date</code></td><td>entries, stickers, daily goals, note</td></tr>
+      <tr><td>GET</td><td><code>/v1/stickers</code></td><td>catalog + custom stickers</td></tr>
+      <tr><td>POST · DELETE</td><td><code>/v1/days/:date/stickers[/:id]</code></td><td>POST <code>{id}</code></td></tr>
+      <tr><td>GET · POST</td><td><code>/v1/goals</code></td><td><code>?kind=daily|weekly|monthly&amp;date</code> · POST <code>{kind, date?, text}</code></td></tr>
+      <tr><td>PATCH</td><td><code>/v1/goals/:id</code></td><td><code>{kind, date?, done?, text?}</code></td></tr>
+    </table></div>
+<pre><code>curl -s -X POST http://127.0.0.1:7317/v1/entries \
+  -H "Authorization: Bearer $DAYLEAF_TOKEN" -H "Content-Type: application/json" \
+  -d '{"content":"Sunny, 22°C. Walked 6,200 steps.","planner":"Weather","source":"my-script"}'</code></pre>
+
+    <h2>Privacy</h2>
+    <p>The API is loopback-only and off by default. The token is generated on your Mac and never sent anywhere. Agents see only what you let them query, and every entry they write is labelled with its source. Your journal stays on your devices and in your own iCloud or Google Drive backups, exactly as before.</p>
+
+    <p style="margin-top:26px;font-size:.9rem">Questions or ideas? The <a href="community.html">community board</a> is where the developer reads everything. The CLI and MCP server are open source: <a href="https://github.com/icyriver2023/Date-Jotter/tree/main/cli">github.com/icyriver2023/Date-Jotter/cli</a>.</p>
+  </div>
+</body>
+</html>
