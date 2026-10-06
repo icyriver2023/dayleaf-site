@@ -72,6 +72,30 @@ dayleaf list --from -7 --q sleep --json</code></pre>
 <pre><code>claude mcp add dayleaf -- npx -y dayleaf-mcp</code></pre>
     <p>Then ask: <em>"Log today's weather in my Weather planner"</em>, <em>"What did I write about sleep last week?"</em>, <em>"Stamp a workout sticker on yesterday."</em></p>
 
+    <h2>Agents that are not on your Mac: Meta Muse and friends</h2>
+    <p>Hosted agents cannot reach a laptop. For them Dayleaf has a cloud door: in the app (iPhone, Mac or Android, signed in) open <strong>Settings → Cloud access for agents</strong>, switch it on and tap <strong>Create API key</strong>. Dayleaf then keeps a <em>text-only</em> copy of your entries on its server (never photos, audio or video) and every device of your account pulls what agents write.</p>
+    <h3>Meta Muse</h3>
+    <p>Muse builds its own connector from an MCP URL. Paste this into a Muse chat, then give it the API key when it asks through its credential flow:</p>
+<pre><code>Build a custom integration to Dayleaf. Its MCP server URL is
+https://date-jotter-production.up.railway.app/mcp and it needs a bearer token.
+I want you to be able to write my daily weather, health and screen-time notes
+into my journal and read back what I wrote, from any future conversation.
+Connect to it, test every capability end to end, show me the results, and
+save the integration as a reusable skill.</code></pre>
+    <h3>Any MCP client or script</h3>
+<pre><code># MCP (Streamable HTTP, stateless)
+POST https://date-jotter-production.up.railway.app/mcp
+Authorization: Bearer &lt;API key&gt;
+
+# REST — same routes as the local API
+curl -s -X POST https://date-jotter-production.up.railway.app/v1/entries \
+  -H "Authorization: Bearer $DAYLEAF_KEY" -H "Content-Type: application/json" \
+  -d '{"content":"Cloudy, 18°C. 7,100 steps.","planner":"Weather","source":"muse"}'
+
+# The CLI works against the cloud too
+dayleaf auth &lt;API key&gt; --url https://date-jotter-production.up.railway.app</code></pre>
+    <p>The cloud door covers planners, entries and search. Stickers and goals stay on the Mac local API for now. Revoke keys or switch the whole thing off at any time in Settings; switching it off deletes the server copy.</p>
+
     <h2>Ideas</h2>
     <ul class="ideas">
       <li><strong>Evening weather line</strong> — <code>curl -s "wttr.in/San+Jose?format=%C+%t" | xargs -I{} dayleaf add "{}" --planner Weather --source wttr</code> in a nightly cron.</li>
