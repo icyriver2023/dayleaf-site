@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your agent can keep your journal now — Dayleaf Blog</title>
+  <meta name="description" content="Headless Dayleaf, in 2.5.0: a local API on the Mac, a command line and MCP server, and a cloud door so agents like Meta Muse can write weather, health and screen-time notes into your calendar journal — and read it back.">
+  <link rel="canonical" href="https://getdayleaf.app/blog/headless-dayleaf.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dayleaf">
+  <meta property="og:title" content="Your agent can keep your journal now — Dayleaf Blog">
+  <meta property="og:description" content="Headless Dayleaf, in 2.5.0: a local API on the Mac, a command line and MCP server, and a cloud door so agents like Meta Muse can write weather, health and screen-time notes into your calendar journal — and read it back.">
+  <meta property="og:url" content="https://getdayleaf.app/blog/headless-dayleaf.html">
+  <meta property="og:image" content="https://getdayleaf.app/assets/og-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Your agent can keep your journal now — Dayleaf Blog">
+  <meta name="twitter:description" content="Headless Dayleaf, in 2.5.0: a local API on the Mac, a command line and MCP server, and a cloud door so agents like Meta Muse can write weather, health and screen-time notes into your calendar journal — and read it back.">
+  <meta name="twitter:image" content="https://getdayleaf.app/assets/og-card.jpg">
+  <link rel="icon" type="image/png" href="../assets/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --paper:#F4EEE1; --paper-warm:#EDE5D4; --card:#FFFDF7; --ink:#2C2416;
+            --ink-soft:#524936; --brand:#8B6F47; --border:#D3C7B0; --leaf:#2E7D46; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Inter',-apple-system,sans-serif; color:var(--ink);
+           background:linear-gradient(180deg,var(--paper) 0%,var(--paper-warm) 100%);
+           line-height:1.7; min-height:100vh; }
+    h1,h2,h3 { font-family:'Crimson Pro',Georgia,serif; line-height:1.2; }
+    a { color:var(--brand); }
+    .wrap { max-width:720px; margin:0 auto; padding:0 24px 72px; }
+    nav { display:flex; justify-content:center; gap:26px; padding:18px 0; font-size:.95rem; font-weight:500; }
+    .brandline { text-align:center; padding:20px 0 6px; }
+    .brandline img { width:56px; height:56px; border-radius:14px; box-shadow:0 6px 18px rgba(93,72,42,.22); }
+    h1 { font-size:2.2rem; margin:18px 0 6px; text-align:center; }
+    .meta { text-align:center; color:var(--ink-soft); font-size:.9rem; margin-bottom:34px; }
+    article h2 { font-size:1.5rem; margin:34px 0 10px; }
+    article p, article li { color:#3a3226; margin-bottom:14px; }
+    article ol, article ul { padding-left:22px; }
+    article .tip { background:var(--card); border:1px solid var(--border); border-radius:14px;
+                   padding:16px 18px; font-size:.95rem; color:var(--ink-soft); }
+    .cta { display:block; text-align:center; margin:44px auto 0; }
+    .post-card { display:block; background:var(--card); border:1px solid var(--border);
+                 border-radius:16px; padding:22px 24px; margin-bottom:16px;
+                 text-decoration:none; box-shadow:0 4px 14px rgba(93,72,42,.07); }
+    .post-card h2 { font-size:1.35rem; color:var(--ink); margin-bottom:4px; }
+    .post-card p { color:var(--ink-soft); font-size:.95rem; }
+    .post-card .date { font-size:.8rem; color:var(--ink-soft); }
+  </style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CKYCE4X1YG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CKYCE4X1YG');
+  </script>
+</head>
+<body>
+  <nav><a href="../index.html">Home</a><a href="../blog/">Blog</a><a href="../community.html">Community</a><a href="../changelog.html">Changelog</a><a href="../support.html">Support</a></nav>
+  <div class="brandline"><a href="../index.html"><img src="../assets/icon.png" alt="Dayleaf"></a></div>
+  <div class="wrap">
+
+<h1>Your agent can keep your journal now</h1>
+<p class="meta">Announcement · October 7, 2026</p>
+<article>
+<p>Dayleaf 2.5.0 opens the journal to your software. We call it <strong>Headless Dayleaf</strong>: three doors into the same calendar journal, so a script, a command line, or an AI agent can write a page the way you would — into the right planner, on the right day, with a small label that says who wrote it.</p>
+
+<p>Here is the moment that made us build it. I asked Meta's Muse, from my phone, to log today's weather. A minute later a line read <em>"Cloudy, 18°C. 7,100 steps."</em> on today's page of my Weather planner, with a <strong>via muse</strong> chip beside it, on my iPhone, my Mac and my Android phone. I had not opened Dayleaf. The journal filled itself in, the way a good assistant fills in a paper planner left on the desk.</p>
+
+<h2>🧠 Why agents and journals belong together</h2>
+<p>Journaling is memory. The hard part was never writing beautifully; it was writing <em>at all</em> on the days you were too tired, and remembering the small facts — the weather on the day you moved, how much you slept the week of the launch, which afternoon the headache started. Agents are good at exactly the things people skip: the daily line about the weather, the steps and sleep from your watch, the screen-time tally, a two-line summary of what you shipped. Put those next to what you wrote yourself and the calendar becomes the most honest record you own.</p>
+<p>We also wanted the reverse. An assistant that can read your journal knows what you decided and why, what you were grateful for, who you had coffee with. <em>"What did I write about sleep last week?"</em> is a better question for an agent than for a search box.</p>
+
+<h2>🖥️ Door one: a local API on the Mac</h2>
+<p>Switch on <strong>Settings → Headless Dayleaf</strong> in Dayleaf for Mac and the app serves a small API on your own computer, at <code>127.0.0.1:7317</code>, protected by a token you copy from Settings. It never binds to a network interface. Anything on the Mac can talk to it: a shell script, a cron job, Claude Code, a Python notebook.</p>
+<p>Every call goes through the live app, so an entry written this way is indistinguishable from one you typed: planners, stickers, goals, backups, On This Day, all see it.</p>
+
+<h2>⌨️ Door two: <code>dayleaf</code> on the command line, and an MCP server</h2>
+<p>Install it with <code>npm install -g dayleaf</code>. Then:</p>
+<div class="tip"><code>dayleaf add "Ran 5k along the river before work" --planner Health</code><br><code>dayleaf day today</code><br><code>dayleaf list --from -7 --q sleep --json</code></div>
+<p>The same package ships <code>dayleaf-mcp</code>, a <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server. Point Claude or any MCP client at it and the journal becomes a set of tools: add an entry, read a day, stamp a sticker, tick a goal. One line sets it up in Claude Code: <code>claude mcp add dayleaf -- npx -y dayleaf-mcp</code>. Then you just talk: <em>"stamp a workout sticker on yesterday."</em></p>
+
+<h2>☁️ Door three: cloud access for agents that are not on your Mac</h2>
+<p>Hosted agents like Meta Muse cannot reach a laptop. For them, Dayleaf has a cloud door on every platform: <strong>Settings → Cloud access for agents</strong>. Switch it on, create an API key, and give the agent Dayleaf's MCP URL. For Muse it is one message: <em>"Build a custom integration to Dayleaf…"</em> — the exact prompt is on the <a href="../headless.html">developer page</a>. Muse builds the connector itself, tests it, and saves it as a skill.</p>
+<p>From then on, what agents write lands on every device of your account, and what you write is readable by them. Agents can list your planners, add entries, search, and read a day.</p>
+
+<h2>🔒 What we did and did not compromise</h2>
+<ul>
+<li><strong>Off by default, both doors.</strong> Nothing listens and nothing leaves your device until you flip a switch.</li>
+<li><strong>Text only in the cloud.</strong> The cloud door keeps a copy of entry text, dates and planner names on Dayleaf's server so agents can read them. Photos, voice notes and videos never leave your device. Switch it off and the server copy is deleted.</li>
+<li><strong>Labelled.</strong> Every agent entry carries its source and shows a "via muse" or "via cli" chip. Your words and the agent's never blur.</li>
+<li><strong>Revocable.</strong> Keys are created in the app, shown once, and revoked in one tap.</li>
+<li><strong>Nothing new is gated.</strong> Headless Dayleaf is free, on iPhone, iPad, Mac and Android.</li>
+</ul>
+
+<h2>🧪 Five things to try</h2>
+<ol>
+<li>Tell Muse: <em>"Every morning, log yesterday's weather and my sleep and steps into Dayleaf."</em></li>
+<li>A nightly cron on the Mac: <code>curl -s "wttr.in/San+Jose?format=%C+%t" | xargs -I{} dayleaf add "{}" --planner Weather</code></li>
+<li>Ask Claude: <em>"Read my Dayleaf entries from this week and write a short summary into a Reflections planner."</em></li>
+<li>Have an agent tick your daily goals when it sees the matching entry.</li>
+<li>Use <code>dayleaf list --q decided --json</code> to give any assistant a memory of what you chose and why.</li>
+</ol>
+
+<h2>What's next</h2>
+<p>Stickers and goals through the cloud door, a Dayleaf connector in Muse's directory so you can add it with a tap, and Siri Shortcuts for the iPhone. If you build something with it, tell us on the <a href="../community.html">community board</a>; the best automations will end up in these pages.</p>
+</article>
+<div class="cta-row" style="display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:32px"><a class="cta" style="margin:0" href="https://apps.apple.com/app/id6757987200"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download Dayleaf on the App Store" style="height:52px"></a><a class="cta" style="margin:0" href="https://play.google.com/store/apps/details?id=com.imobiapp.planner"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get Dayleaf on Google Play" style="height:78px;margin:-13px"></a></div>
+<p style="text-align:center;margin-top:18px;font-size:.95rem"><a href="../headless.html">Developer docs for Headless Dayleaf →</a></p>
+  </div>
+</body>
+</html>
