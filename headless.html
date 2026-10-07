@@ -124,6 +124,19 @@ dayleaf auth &lt;API key&gt; --url https://date-jotter-production.up.railway.app
   -H "Authorization: Bearer $DAYLEAF_TOKEN" -H "Content-Type: application/json" \
   -d '{"content":"Sunny, 22°C. Walked 6,200 steps.","planner":"Weather","source":"my-script"}'</code></pre>
 
+    <h2>Markdown export</h2>
+    <p>Prefer files? <strong>Settings → Export as Markdown files</strong> (iPhone, iPad, Mac and Android) writes one note per day — <code>2026/2026-10-06.md</code> — with YAML front matter listing the day's planners, stickers, agent sources and attachment names, plus <code>weeks/</code> and <code>months/</code> pages for goals and a README. It is zipped and handed to the share sheet, so it drops straight into Obsidian, Files or an agent's working folder. Text only; media is referenced by file name.</p>
+<pre><code>---
+date: 2026-10-06
+planners: ["Weather", "Health", "Work"]
+sources: ["muse", "claude"]
+entries: 3
+---
+# Tuesday, October 6, 2026
+
+## Weather
+**07:00** Cloudy, 18°C, light rain after 4 pm. _(via muse)_</code></pre>
+
     <h2>Privacy</h2>
     <p>The API is loopback-only and off by default. The token is generated on your Mac and never sent anywhere. Agents see only what you let them query, and every entry they write is labelled with its source. Your journal stays on your devices and in your own iCloud or Google Drive backups, exactly as before.</p>
 
