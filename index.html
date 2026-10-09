@@ -61,8 +61,11 @@
     .platforms { margin-top: 6px; font-size: .85rem; color: var(--ink-soft); letter-spacing: .02em; }
 
     .carousel-wrap { position: relative; max-width: 1160px; margin: 44px auto 8px; }
-    .promo { display: flex; justify-content: center; padding: 8px 16px 28px; }
-    .promo video { width: min(360px, 78vw); aspect-ratio: 9 / 16; border-radius: 28px; background: #141316; box-shadow: 0 24px 60px rgba(0,0,0,.28); display: block; }
+    .carousel .car-video {
+      flex: 0 0 auto; width: min(320px, 80vw); aspect-ratio: 524 / 1140; object-fit: cover;
+      border-radius: 24px; scroll-snap-align: center; background: #141316;
+      box-shadow: 0 16px 40px rgba(93, 72, 42, .22); border: 1px solid var(--border);
+    }
     .carousel {
       display: flex; gap: 22px; overflow-x: auto; padding: 8px 24px 26px;
       scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
@@ -196,43 +199,28 @@
     <p class="platforms">iPhone · iPad · Apple&nbsp;Watch · Mac · Android</p>
   </header>
 
-  <div class="promo">
-    <video autoplay muted loop playsinline preload="metadata" poster="media/dayleaf-promo-poster.jpg" aria-label="Dayleaf in 28 seconds: calendar journal, stickers, photos, themes, agents, Year in Review, the leafing globe, Day One import, App Lock">
-      <source src="media/dayleaf-promo.mp4" type="video/mp4">
-    </video>
-  </div>
-
   <div class="carousel-wrap">
     <button class="car-btn prev" onclick="slide(-1)" aria-label="Previous">‹</button>
     <div class="carousel" id="carousel">
+      <video class="car-video" autoplay muted loop playsinline preload="metadata" poster="media/dayleaf-promo-poster.jpg" aria-label="Dayleaf in 26 seconds: calendar journal, stickers, photos, themes, agents, Year in Review, the leafing globe, Day One import, App Lock">
+        <source src="media/dayleaf-promo.mp4" type="video/mp4">
+      </video>
       <img src="assets/store/01-month-goals.jpg" alt="Your life, one page at a time — month calendar with goals">
+      <img loading="lazy" decoding="async" src="assets/store/01b-agents.jpg" alt="Your second brain in an agentic world — Muse, Claude and your scripts write to your journal">
       <img loading="lazy" decoding="async" src="assets/store/02-day-view.jpg" alt="Win the day — daily goals, stickers and reflection">
       <img loading="lazy" decoding="async" src="assets/store/03-week-view.jpg" alt="Plan your week, beautifully">
       <img loading="lazy" decoding="async" src="assets/store/04-timeline.jpg" alt="Find any moment — instant search across every entry">
-      <img loading="lazy" decoding="async" src="assets/store/05-themes.jpg" alt="Seven moods, one journal — hand-crafted themes">
+      <img loading="lazy" decoding="async" src="assets/store/05-themes.jpg" alt="Fourteen moods, one journal — hand-crafted themes">
       <img loading="lazy" decoding="async" src="assets/store/06-import.jpg" alt="Switching from Day One? Free import">
       <img loading="lazy" decoding="async" src="assets/store/07-cloud.jpg" alt="Private, backed up, always yours">
     </div>
     <button class="car-btn next" onclick="slide(1)" aria-label="Next">›</button>
   </div>
   <script>
+    // Manual carousel: arrows, swipe and scroll-snap only — no auto-scroll.
     const car = document.getElementById("carousel");
     const stepWidth = () => car.querySelector("img").getBoundingClientRect().width + 22;
-    function slide(dir) {
-      const atEnd = car.scrollLeft + car.clientWidth >= car.scrollWidth - 10;
-      if (dir > 0 && atEnd) {
-        car.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        car.scrollBy({ left: stepWidth() * dir, behavior: "smooth" });
-      }
-    }
-    let autoplay = setInterval(() => slide(1), 2000);
-    const pause = () => { clearInterval(autoplay); autoplay = null; };
-    const resume = () => { if (!autoplay) autoplay = setInterval(() => slide(1), 2000); };
-    car.addEventListener("pointerenter", pause);
-    car.addEventListener("pointerleave", resume);
-    car.addEventListener("touchstart", pause, { passive: true });
-    car.addEventListener("touchend", () => setTimeout(resume, 4000), { passive: true });
+    function slide(dir) { car.scrollBy({ left: stepWidth() * dir, behavior: "smooth" }); }
   </script>
 
   <section class="wrap">
