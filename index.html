@@ -61,6 +61,8 @@
     .platforms { margin-top: 6px; font-size: .85rem; color: var(--ink-soft); letter-spacing: .02em; }
 
     .carousel-wrap { position: relative; max-width: 1160px; margin: 44px auto 8px; }
+    .promo { display: flex; justify-content: center; padding: 8px 16px 28px; }
+    .promo video { width: min(360px, 78vw); aspect-ratio: 9 / 16; border-radius: 28px; background: #141316; box-shadow: 0 24px 60px rgba(0,0,0,.28); display: block; }
     .carousel {
       display: flex; gap: 22px; overflow-x: auto; padding: 8px 24px 26px;
       scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
@@ -193,6 +195,12 @@
     <p class="free-note">Free to start. Own Pro forever with one purchase — subscriptions optional.</p>
     <p class="platforms">iPhone · iPad · Apple&nbsp;Watch · Mac · Android</p>
   </header>
+
+  <div class="promo">
+    <video autoplay muted loop playsinline preload="metadata" poster="media/dayleaf-promo-poster.jpg" aria-label="Dayleaf in 28 seconds: calendar journal, stickers, photos, themes, agents, Year in Review, the leafing globe, Day One import, App Lock">
+      <source src="media/dayleaf-promo.mp4" type="video/mp4">
+    </video>
+  </div>
 
   <div class="carousel-wrap">
     <button class="car-btn prev" onclick="slide(-1)" aria-label="Previous">‹</button>
