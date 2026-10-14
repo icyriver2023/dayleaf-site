@@ -46,20 +46,33 @@
   <div class="container">
     <a class="back" href="index.html">← Dayleaf</a>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: August 18, 2026</p>
+    <p class="updated">Last updated: October 13, 2026</p>
 
     <p>Dayleaf ("we", "our", or "us") is committed to protecting your privacy. This policy explains what information the Dayleaf app handles and how.</p>
 
     <h2>Your journal stays yours</h2>
     <ul>
-      <li><strong>Journal entries, photos, videos and voice notes</strong> are stored locally on your device. They are never sent to us.</li>
+      <li><strong>Journal entries, photos, videos and voice notes</strong> are stored locally on your device. Entry text is sent to us only if you switch on one of the optional features below (server backup or cloud access for agents). Photos, videos and voice notes are never sent to us.</li>
       <li><strong>iCloud backup</strong> (optional) copies your journal to <em>your own</em> iCloud Drive, protected by your Apple account. We cannot read it.</li>
       <li><strong>Server backup</strong> (optional, requires an account) encrypts and stores your entries on our servers solely so you can restore them. We do not read, analyze, or share journal content.</li>
       <li><strong>Day One import</strong> is processed entirely on your device. Your imported archive is never uploaded anywhere by Dayleaf.</li>
     </ul>
 
+    <h2>Cloud access for agents (optional, off by default)</h2>
+    <p>In Settings you can switch on <em>Cloud access for agents</em> so an AI assistant you choose (for example Meta Muse, Claude or Gemini) or your own script can write to and read from your journal while your phone is away. Nothing is shared until you switch it on and create an API key yourself.</p>
+    <ul>
+      <li><strong>What is copied:</strong> the text of your entries, their dates, your planner names, and a label showing whether you or an agent wrote each entry. Photos, videos, voice notes, stickers and goals are not copied.</li>
+      <li><strong>Who can read it:</strong> only a holder of one of your API keys, and us as the operator of the server. We do not read, analyze or share it, and we do not use it for advertising or to train models.</li>
+      <li><strong>Third-party assistants:</strong> when you give a key to an assistant, that provider receives whatever the assistant reads and handles it under its own privacy policy. Give a key only to services you trust.</li>
+      <li><strong>Keys:</strong> shown once, stored on our server only as a one-way hash, and revocable one by one or all at once in Settings.</li>
+      <li><strong>Deleting it:</strong> switching the feature off in Settings deletes the server-side copy and revokes every key.</li>
+    </ul>
+
     <h2>The world map ("The World Is Leafing")</h2>
     <p>Dayleaf can show a globe of anonymous activity. When you save an entry (and only if sharing is enabled — you can turn it off on the globe screen), the app sends a bare "someone wrote" signal with no content, no account, and no location from your device. Our server derives an approximate city-level point from the network request, blurs it by roughly 30&nbsp;km, stores only that point and a timestamp, and discards the network address. Points expire after 14 days. Nothing on the globe can identify you.</p>
+
+    <h2>Leaderboard and invites (optional)</h2>
+    <p>If you are signed in, Dayleaf reports how many entries you wrote on each of the last seven days (a number per day, never the text) so it can rank writers on the World Is Leafing leaderboard. The board shows a display name you choose. If you invite a friend, we store the invite code, the pairing between the two accounts, an anonymous device identifier used to prevent abuse, and the number of days the invited person has written, so we can grant the 30 days of Pro to each of you.</p>
 
     <h2>Purchases</h2>
     <p>Dayleaf Pro is sold through Apple as a one-time purchase or an optional auto-renewable subscription. Payments are processed entirely by Apple; we never see your payment details. Subscriptions renew until canceled in your device Settings. <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use (EULA)</a>.</p>
