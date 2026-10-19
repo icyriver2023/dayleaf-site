@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your agent can keep your journal now — Dayleaf Blog</title>
-  <meta name="description" content="Headless Dayleaf, in 2.5.0: a local API on the Mac, a command line and MCP server, and a cloud door so agents like Meta Muse can write weather, health and screen-time notes into your calendar journal — and read it back.">
+  <title>Your agent can keep your journal now | Dayleaf Blog</title>
+  <meta name="description" content="Headless Dayleaf, in 2.5.0: a local API on the Mac, a command line and MCP server, and a cloud door so agents like Meta Muse can write weather, health and screen-time notes into your calendar journal, and read it back.">
   <link rel="canonical" href="https://getdayleaf.app/blog/headless-dayleaf.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Dayleaf">
-  <meta property="og:title" content="Your agent can keep your journal now — Dayleaf Blog">
-  <meta property="og:description" content="Headless Dayleaf, in 2.5.0: a local API on the Mac, a command line and MCP server, and a cloud door so agents like Meta Muse can write weather, health and screen-time notes into your calendar journal — and read it back.">
+  <meta property="og:title" content="Your agent can keep your journal now | Dayleaf Blog">
+  <meta property="og:description" content="Headless Dayleaf, in 2.5.0: a local API on the Mac, a command line and MCP server, and a cloud door so agents like Meta Muse can write weather, health and screen-time notes into your calendar journal, and read it back.">
   <meta property="og:url" content="https://getdayleaf.app/blog/headless-dayleaf.html">
   <meta property="og:image" content="https://getdayleaf.app/assets/og-card.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Your agent can keep your journal now — Dayleaf Blog">
-  <meta name="twitter:description" content="Headless Dayleaf, in 2.5.0: a local API on the Mac, a command line and MCP server, and a cloud door so agents like Meta Muse can write weather, health and screen-time notes into your calendar journal — and read it back.">
+  <meta name="twitter:title" content="Your agent can keep your journal now | Dayleaf Blog">
+  <meta name="twitter:description" content="Headless Dayleaf, in 2.5.0: a local API on the Mac, a command line and MCP server, and a cloud door so agents like Meta Muse can write weather, health and screen-time notes into your calendar journal, and read it back.">
   <meta name="twitter:image" content="https://getdayleaf.app/assets/og-card.jpg">
   <link rel="icon" type="image/png" href="../assets/icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,12 +67,12 @@
 <h1>Your agent can keep your journal now</h1>
 <p class="meta">Announcement · October 7, 2026</p>
 <article>
-<p>Dayleaf 2.5.0 opens the journal to your software. We call it <strong>Headless Dayleaf</strong>: three doors into the same calendar journal, so a script, a command line, or an AI agent can write a page the way you would — into the right planner, on the right day, with a small label that says who wrote it.</p>
+<p>Dayleaf 2.5.0 opens the journal to your software. We call it <strong>Headless Dayleaf</strong>: three doors into the same calendar journal, so a script, a command line, or an AI agent can write a page the way you would, into the right planner, on the right day, with a small label that says who wrote it.</p>
 
 <p>Here is the moment that made us build it. I asked Meta's Muse, from my phone, to log today's weather. A minute later a line read <em>"Cloudy, 18°C. 7,100 steps."</em> on today's page of my Weather planner, with a <strong>via muse</strong> chip beside it, on my iPhone, my Mac and my Android phone. I had not opened Dayleaf. The journal filled itself in, the way a good assistant fills in a paper planner left on the desk.</p>
 
 <h2>🧠 Why agents and journals belong together</h2>
-<p>Journaling is memory. The hard part was never writing beautifully; it was writing <em>at all</em> on the days you were too tired, and remembering the small facts — the weather on the day you moved, how much you slept the week of the launch, which afternoon the headache started. Agents are good at exactly the things people skip: the daily line about the weather, the steps and sleep from your watch, the screen-time tally, a two-line summary of what you shipped. Put those next to what you wrote yourself and the calendar becomes the most honest record you own.</p>
+<p>Journaling is memory. The hard part was never writing beautifully; it was writing <em>at all</em> on the days you were too tired, and remembering the small facts, the weather on the day you moved, how much you slept the week of the launch, which afternoon the headache started. Agents are good at exactly the things people skip: the daily line about the weather, the steps and sleep from your watch, the screen-time tally, a two-line summary of what you shipped. Put those next to what you wrote yourself and the calendar becomes the most honest record you own.</p>
 <p>We also wanted the reverse. An assistant that can read your journal knows what you decided and why, what you were grateful for, who you had coffee with. <em>"What did I write about sleep last week?"</em> is a better question for an agent than for a search box.</p>
 
 <h2>🖥️ Door one: a local API on the Mac</h2>
@@ -85,7 +85,7 @@
 <p>The same package ships <code>dayleaf-mcp</code>, a <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server. Point Claude or any MCP client at it and the journal becomes a set of tools: add an entry, read a day, stamp a sticker, tick a goal. One line sets it up in Claude Code: <code>claude mcp add dayleaf -- npx -y dayleaf-mcp</code>. Then you just talk: <em>"stamp a workout sticker on yesterday."</em></p>
 
 <h2>☁️ Door three: cloud access for agents that are not on your Mac</h2>
-<p>Hosted agents like Meta Muse cannot reach a laptop. For them, Dayleaf has a cloud door on every platform: <strong>Settings → Cloud access for agents</strong>. Switch it on, create an API key, and give the agent Dayleaf's MCP URL. For Muse it is one message: <em>"Build a custom integration to Dayleaf…"</em> — the exact prompt is on the <a href="../headless.html">developer page</a>. Muse builds the connector itself, tests it, and saves it as a skill.</p>
+<p>Hosted agents like Meta Muse cannot reach a laptop. For them, Dayleaf has a cloud door on every platform: <strong>Settings → Cloud access for agents</strong>. Switch it on, create an API key, and give the agent Dayleaf's MCP URL. For Muse it is one message: <em>"Build a custom integration to Dayleaf…"</em>, the exact prompt is on the <a href="../headless.html">developer page</a>. Muse builds the connector itself, tests it, and saves it as a skill.</p>
 <p>From then on, what agents write lands on every device of your account, and what you write is readable by them. Agents can list your planners, add entries, search, and read a day.</p>
 
 <h2>🔒 What we did and did not compromise</h2>

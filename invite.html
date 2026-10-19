@@ -28,12 +28,12 @@
 <body>
   <div class="container">
     <h1>You're invited to Dayleaf</h1>
-    <p>A friend keeps their journal in Dayleaf — a diary that lives on a calendar. Use their code in the app and you both get a month of Dayleaf Pro.</p>
+    <p>A friend keeps their journal in Dayleaf, a diary that lives on a calendar. Use their code in the app and you both get a month of Dayleaf Pro.</p>
     <div class="code" id="code">······</div><br>
     <button class="copy" id="copy">Copy code</button>
     <ol class="steps">
       <li>Install Dayleaf and sign in with Apple or Google.</li>
-      <li>Open Settings → Invite a friend → “Have a friend's code?” — the code is pasted for you.</li>
+      <li>Open Settings → Invite a friend → “Have a friend's code?”, the code is pasted for you.</li>
       <li>Write for three days. Your friend gets their month too.</li>
     </ol>
     <div class="badges">
@@ -45,7 +45,7 @@
   <script>
     var code = (location.hash || '').replace('#', '').replace(/[^A-Za-z0-9]/g, '').toUpperCase().slice(0, 8);
     var el = document.getElementById('code');
-    if (code) { el.textContent = code; } else { el.textContent = '— — — — — —'; }
+    if (code) { el.textContent = code; } else { el.textContent = ', , , , , , '; }
     document.getElementById('copy').addEventListener('click', function () {
       if (!code) return;
       navigator.clipboard.writeText(code).then(function () { document.getElementById('copy').textContent = 'Copied'; });

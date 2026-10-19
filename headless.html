@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Headless Dayleaf — API, CLI and MCP for agentic journaling</title>
-  <meta name="description" content="Let agents, scripts and the dayleaf command line read and write your Dayleaf journal through a local API on your Mac. Weather, health, screen time, a summary of your day — filed where you'd have written them.">
+  <title>Headless Dayleaf: API, CLI and MCP for agentic journaling</title>
+  <meta name="description" content="Let agents, scripts and the dayleaf command line read and write your Dayleaf journal through a local API on your Mac. Weather, health, screen time, a summary of your day, filed where you'd have written them.">
   <link rel="canonical" href="https://getdayleaf.app/headless.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Dayleaf">
-  <meta property="og:title" content="Headless Dayleaf — agentic journaling">
+  <meta property="og:title" content="Headless Dayleaf, agentic journaling">
   <meta property="og:description" content="A local API, a CLI and an MCP server so your agents can write to your journal. Nothing leaves your Mac.">
   <meta property="og:url" content="https://getdayleaf.app/headless.html">
   <link rel="icon" href="assets/favicon.png">
@@ -45,7 +45,7 @@
     <p class="lede">Your journal, open to your agents. Dayleaf for Mac can serve a small local API so scripts, the <code>dayleaf</code> command line and any MCP-capable agent can read and write entries, stickers and goals. Nothing leaves your Mac.</p>
 
     <div class="note">
-      <p style="margin-bottom:6px"><strong>What it unlocks.</strong> An agent that already knows your calendar, your health data, your screen time or the weather can file them into Dayleaf as it would into a notebook — a line about the day's weather in a <em>Weather</em> planner, your steps and sleep in <em>Health</em>, a summary of what you shipped in <em>Work</em>. Entries written this way carry a small "via <em>name</em>" label, so your own words and an agent's notes never blur.</p>
+      <p style="margin-bottom:6px"><strong>What it unlocks.</strong> An agent that already knows your calendar, your health data, your screen time or the weather can file them into Dayleaf as it would into a notebook, a line about the day's weather in a <em>Weather</em> planner, your steps and sleep in <em>Health</em>, a summary of what you shipped in <em>Work</em>. Entries written this way carry a small "via <em>name</em>" label, so your own words and an agent's notes never blur.</p>
     </div>
 
     <h2>Switch it on</h2>
@@ -87,7 +87,7 @@ save the integration as a reusable skill.</code></pre>
 POST https://date-jotter-production.up.railway.app/mcp
 Authorization: Bearer &lt;API key&gt;
 
-# REST — same routes as the local API
+# REST, same routes as the local API
 curl -s -X POST https://date-jotter-production.up.railway.app/v1/entries \
   -H "Authorization: Bearer $DAYLEAF_KEY" -H "Content-Type: application/json" \
   -d '{"content":"Cloudy, 18°C. 7,100 steps.","planner":"Weather","source":"muse"}'
@@ -98,11 +98,11 @@ dayleaf auth &lt;API key&gt; --url https://date-jotter-production.up.railway.app
 
     <h2>Ideas</h2>
     <ul class="ideas">
-      <li><strong>Evening weather line</strong> — <code>curl -s "wttr.in/San+Jose?format=%C+%t" | xargs -I{} dayleaf add "{}" --planner Weather --source wttr</code> in a nightly cron.</li>
-      <li><strong>Health summary</strong> — an agent with access to your Apple Health export writes steps, sleep and workouts into <em>Health</em> once a day.</li>
-      <li><strong>Screen time</strong> — a short "where the hours went" note, so the calendar shows it next to what you wrote.</li>
-      <li><strong>Day summary</strong> — at 9 pm an agent reads today's entries (<code>dayleaf day today --json</code>), writes a two-line summary and ticks the goals you finished.</li>
-      <li><strong>Memory for your agent</strong> — <code>dayleaf list --q "decided"</code> gives an assistant a searchable record of what you chose and why.</li>
+      <li><strong>Evening weather line</strong>, <code>curl -s "wttr.in/San+Jose?format=%C+%t" | xargs -I{} dayleaf add "{}" --planner Weather --source wttr</code> in a nightly cron.</li>
+      <li><strong>Health summary</strong>, an agent with access to your Apple Health export writes steps, sleep and workouts into <em>Health</em> once a day.</li>
+      <li><strong>Screen time</strong>, a short "where the hours went" note, so the calendar shows it next to what you wrote.</li>
+      <li><strong>Day summary</strong>, at 9 pm an agent reads today's entries (<code>dayleaf day today --json</code>), writes a two-line summary and ticks the goals you finished.</li>
+      <li><strong>Memory for your agent</strong>, <code>dayleaf list --q "decided"</code> gives an assistant a searchable record of what you chose and why.</li>
     </ul>
 
     <h2>HTTP API</h2>
@@ -125,7 +125,7 @@ dayleaf auth &lt;API key&gt; --url https://date-jotter-production.up.railway.app
   -d '{"content":"Sunny, 22°C. Walked 6,200 steps.","planner":"Weather","source":"my-script"}'</code></pre>
 
     <h2>Markdown export</h2>
-    <p>Prefer files? <strong>Settings → Export as Markdown files</strong> (iPhone, iPad, Mac and Android) writes one note per day — <code>2026/2026-10-06.md</code> — with YAML front matter listing the day's planners, stickers, agent sources and attachment names, plus <code>weeks/</code> and <code>months/</code> pages for goals and a README. It is zipped and handed to the share sheet, so it drops straight into Obsidian, Files or an agent's working folder. Text only; media is referenced by file name. Part of Dayleaf Pro (7-day free trial); the plain text and CSV email exports stay free.</p>
+    <p>Prefer files? <strong>Settings → Export as Markdown files</strong> (iPhone, iPad, Mac and Android) writes one note per day, <code>2026/2026-10-06.md</code>, with YAML front matter listing the day's planners, stickers, agent sources and attachment names, plus <code>weeks/</code> and <code>months/</code> pages for goals and a README. It is zipped and handed to the share sheet, so it drops straight into Obsidian, Files or an agent's working folder. Text only; media is referenced by file name. Part of Dayleaf Pro (7-day free trial); the plain text and CSV email exports stay free.</p>
 <pre><code>---
 date: 2026-10-06
 planners: ["Weather", "Health", "Work"]

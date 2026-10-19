@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dayleaf Community</title>
-  <meta name="description" content="Ask questions, request features, and talk to the Dayleaf developer — the same community board that lives inside the app.">
+  <meta name="description" content="Ask questions, request features, and talk to the Dayleaf developer, the same community board that lives inside the app.">
   <link rel="canonical" href="https://getdayleaf.app/community.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Dayleaf">
   <meta property="og:title" content="Dayleaf Community">
-  <meta property="og:description" content="Ask questions, request features, and talk to the Dayleaf developer — the same community board that lives inside the app.">
+  <meta property="og:description" content="Ask questions, request features, and talk to the Dayleaf developer, the same community board that lives inside the app.">
   <meta property="og:url" content="https://getdayleaf.app/community.html">
   <meta property="og:image" content="https://getdayleaf.app/assets/og-card.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Dayleaf Community">
-  <meta name="twitter:description" content="Ask questions, request features, and talk to the Dayleaf developer — the same community board that lives inside the app.">
+  <meta name="twitter:description" content="Ask questions, request features, and talk to the Dayleaf developer, the same community board that lives inside the app.">
   <meta name="twitter:image" content="https://getdayleaf.app/assets/og-card.jpg">
   <link rel="icon" type="image/png" href="assets/icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,7 +85,7 @@
   <div class="brandline"><a href="index.html"><img src="assets/icon.png" alt="Dayleaf"></a></div>
   <div class="wrap">
     <h1>Community</h1>
-    <p class="sub">Questions, ideas, and feedback — this is the same board that lives inside the app, and the developer reads everything.</p>
+    <p class="sub">Questions, ideas, and feedback, this is the same board that lives inside the app, and the developer reads everything.</p>
 
     <div class="toolbar">
       <span class="handle-chip" id="handleChip"></span>
@@ -98,7 +98,7 @@
       <label for="pfTitle">Title</label>
       <input id="pfTitle" maxlength="120" placeholder="What's on your mind?">
       <label for="pfBody">Details</label>
-      <textarea id="pfBody" maxlength="2000" placeholder="Feature idea, question, bug — anything."></textarea>
+      <textarea id="pfBody" maxlength="2000" placeholder="Feature idea, question, bug, anything."></textarea>
       <div class="row">
         <button type="button" class="btn quiet" id="pfCancel">Cancel</button>
         <button type="submit" class="btn">Post</button>
@@ -134,13 +134,13 @@
         const d = await r.json();
         render(d.posts || []);
       } catch (e) {
-        feed.innerHTML = '<p class="muted">Couldn\'t reach the board — please try again in a minute.</p>';
+        feed.innerHTML = '<p class="muted">Couldn\'t reach the board, please try again in a minute.</p>';
       }
     }
 
     function render(posts) {
       if (!posts.length) {
-        feed.innerHTML = '<p class="muted">No posts yet — start the first thread!</p>';
+        feed.innerHTML = '<p class="muted">No posts yet, start the first thread!</p>';
         return;
       }
       feed.innerHTML = posts.map(p => `
@@ -151,7 +151,7 @@
           </div>
           <span class="who">${esc(p.handle)} · ${ago(p.createdAt)}</span>
           <p class="body">${esc(p.body)}</p>
-          <span class="replies-note" onclick="toggleThread('${p.id}')">${p.replyCount} ${p.replyCount === 1 ? "reply" : "replies"} — tap to ${p.replyCount ? "read & reply" : "reply"}</span>
+          <span class="replies-note" onclick="toggleThread('${p.id}')">${p.replyCount} ${p.replyCount === 1 ? "reply" : "replies"}, tap to ${p.replyCount ? "read & reply" : "reply"}</span>
           ${p.mine ? `<span class="replies-note" style="float:right;color:#C45C5C" onclick="deletePost('${p.id}')">delete</span>` : ""}
           <div class="thread" id="thread-${p.id}"></div>
         </div>`).join("");
