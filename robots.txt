@@ -1,4 +1,17 @@
 User-agent: *
 Allow: /
 Disallow: /personal/
+
+# AI search and answer engines are welcome (ChatGPT search, Perplexity, Claude, Gemini, Copilot).
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: PerplexityBot
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Google-Extended
+User-agent: Bingbot
+Allow: /
+Disallow: /personal/
+
 Sitemap: https://getdayleaf.app/sitemap.xml
