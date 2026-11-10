@@ -60,11 +60,6 @@
     .free-note { margin-top: 10px; font-size: .9rem; color: var(--ink-soft); }
     .platforms { margin-top: 6px; font-size: .85rem; color: var(--ink-soft); letter-spacing: .02em; }
 
-    .hero-shot { display: block; max-width: 1160px; margin: 36px auto 0; padding: 0 16px; }
-    .hero-shot img {
-      display: block; width: 100%; height: auto; border-radius: 24px;
-      border: 1px solid var(--border); box-shadow: 0 16px 40px rgba(93, 72, 42, .18);
-    }
     .carousel-wrap { position: relative; max-width: 1160px; margin: 44px auto 8px; }
     .carousel .car-video {
       flex: 0 0 auto; width: min(320px, 80vw); aspect-ratio: 9 / 16; object-fit: contain;
@@ -204,10 +199,6 @@
     <p class="platforms">iPhone · iPad · Apple&nbsp;Watch · Mac · Android</p>
   </header>
 
-  <picture class="hero-shot">
-    <source type="image/webp" srcset="assets/hero-devices-1200.webp 1200w, assets/hero-devices-2400.webp 2400w" sizes="(max-width: 1160px) 100vw, 1160px">
-    <img src="assets/hero-devices-1200.jpg" srcset="assets/hero-devices-1200.jpg 1200w, assets/hero-devices-2400.jpg 2400w" sizes="(max-width: 1160px) 100vw, 1160px" width="2400" height="1029" fetchpriority="high" alt="Dayleaf on Mac, iPad, iPhone and Apple Watch: an October calendar filled with photos, entries and goals">
-  </picture>
 
   <div class="carousel-wrap">
     <button class="car-btn prev" onclick="slide(-1)" aria-label="Previous">‹</button>
@@ -215,7 +206,7 @@
       <img src="assets/store/01-wall.jpg" alt="Your life, one page at a time: a month of photos on the calendar">
       <img loading="lazy" decoding="async" src="assets/store/02-day.jpg" alt="Write a little, keep it forever: goals, stickers, photos and a few honest lines">
       <img loading="lazy" decoding="async" src="assets/store/03-themes.jpg" alt="Twenty moods, one journal: hand-crafted themes">
-      <img loading="lazy" decoding="async" src="assets/store/04-world.jpg" alt="You're not writing alone: the leafing globe">
+      <img loading="lazy" decoding="async" src="assets/store/04-private.jpg" alt="Your diary, for your eyes only: passcode lock, stored on your device, backed up to your own iCloud, no ads">
       <img loading="lazy" decoding="async" src="assets/store/05-stickers.jpg" alt="Stickers, like a real planner">
       <img loading="lazy" decoding="async" src="assets/store/06-week.jpg" alt="Win the week: weekly goals and every day at a glance">
       <img loading="lazy" decoding="async" src="assets/store/07-onthisday.jpg" alt="Relive it, years later: On This Day">
@@ -243,12 +234,11 @@
       <div class="card"><div class="emoji">⌚️</div><h3>One tap from your wrist</h3><p>The Apple Watch app opens straight into capture, dictate a thought or record a voice memo, and it lands in your journal with an automatic transcript.</p></div>
       <div class="card"><div class="emoji">📸</div><h3>Photos from that day</h3><p>Writing about last Saturday? The photos you took that day appear right in the editor, attach them with one tap. Videos and voice notes too.</p></div>
       <div class="card"><div class="emoji">💻</div><h3>At home on your Mac</h3><p>The full journal on your desktop, same planners, same themes, same calendar, one purchase across all your devices.</p></div>
-      <div class="card"><div class="emoji">🌍</div><h3>The world is leafing</h3><p>A living globe where every light is a real person writing right now, anonymous, city-level sparks and nothing more. Quiet company for a quiet habit.</p></div>
       <div class="card"><div class="emoji">🕰</div><h3>On This Day</h3><p>Revisit what you wrote on this date across the years, your own history, resurfacing right when it means the most.</p></div>
       <div class="card"><div class="emoji">🎨</div><h3>Twenty hand-crafted themes</h3><p>From Paper and Forest to Arctic, Neon, Marker and Seasons, which follows the time of year. Each has a light and a dark face. Personalize every planner with its own icon, font and text size.</p></div>
       <div class="card"><div class="emoji">⭐️</div><h3>Stickers, like real ones</h3><p>Mark birthdays, workouts, paydays and deadlines with day stickers, or design your own, just like a sticker sheet in a paper planner.</p></div>
       <div class="card"><div class="emoji">🎯</div><h3>Goals &amp; reflection</h3><p>Daily, weekly and monthly goals with notes to look back on, checkable from your phone or your watch.</p></div>
-      <div class="card"><div class="emoji">🔒</div><h3>Private, backed up, yours</h3><p>Local-first storage with one-tap backup to your own iCloud. Your journal is never locked in, export any time. Available in 11 languages.</p></div>
+      <div class="card"><div class="emoji">🔒</div><h3>Your diary, for your eyes only</h3><p>Entries stay on your device and in your own iCloud. We never read them, never sell them and never show you ads. Lock the app with a passcode, back up in one tap, export any time. Available in 11 languages.</p></div>
     </div>
   </section>
 
